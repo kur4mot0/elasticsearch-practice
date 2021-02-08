@@ -12,7 +12,7 @@ async function elasticCreateIndex(indexName) {
 
 async function elasticGetIndex(indexName)
 {
-   const endpoint = ELASTIC_URL+"/"+indexName;
+   const endpoint = `${ELASTIC_URL}/${indexName}` //ELASTIC_URL+"/"+indexName;
    const response = await axios.get(endpoint);
    console.log(response.data);
 }
@@ -20,8 +20,10 @@ async function elasticGetIndex(indexName)
 async function elasticDeleteIndex(indexName)
 {
    const endpoint = ELASTIC_URL+"/"+indexName;
-   const response = await axios.delete(endpoint);
-   console.log(response.data);
+   const {data} = await axios.delete(endpoint);
+
+
+   console.log(data);
 }
 
 function CreateIndex() {
